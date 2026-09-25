@@ -180,7 +180,3 @@ curl -i -c cookie.txt -b cookie.txt -H "Content-Type: application/json" \
 - **404 no Servidor Web**: Garanta que o Apache aponta o `DocumentRoot` para a raiz do projeto e que o modulo `mod_rewrite` esta ativado.
 
 ---
-
-## Licenca
-
-Projeto licenciado sob a licenca **MIT**.
