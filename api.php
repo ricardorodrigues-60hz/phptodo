@@ -7,8 +7,6 @@ require_once __DIR__ . '/pomodoro.php';
 
 $action = $_GET['action'] ?? '';
 $method = $_SERVER['REQUEST_METHOD'];
-
-// Parse JSON payload if sent
 $rawInput = file_get_contents('php://input');
 $json = json_decode($rawInput, true);
 $input = is_array($json) ? array_merge($_POST, $json) : $_POST;

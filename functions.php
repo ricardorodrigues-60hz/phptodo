@@ -25,13 +25,7 @@ function jsonResponse(mixed $data, int $status = 200): void
     exit;
 }
 
-function query(string $sql, array $params = []): PDOStatement
-{
-    global $pdo;
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute($params);
-    return $stmt;
-}
+
 
 function sanitize(mixed $input): mixed
 {
