@@ -1,6 +1,6 @@
 -- Database Schema for PHP Todo + Pomodoro
 
-CREATE TABLE IF NOT EXISTS users (
+CREATE TABLE users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
     lastname VARCHAR(100) NOT NULL,
@@ -9,9 +9,9 @@ CREATE TABLE IF NOT EXISTS users (
     password VARCHAR(255) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+);
 
-CREATE TABLE IF NOT EXISTS todos (
+CREATE TABLE todos (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
     todo_name VARCHAR(200) NOT NULL,
@@ -22,9 +22,9 @@ CREATE TABLE IF NOT EXISTS todos (
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
     INDEX idx_user_id (user_id),
     INDEX idx_state (state)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+);
 
-CREATE TABLE IF NOT EXISTS pomodoro_sessions (
+CREATE TABLE pomodoro_sessions (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
     todo_id INT NULL,
@@ -36,4 +36,4 @@ CREATE TABLE IF NOT EXISTS pomodoro_sessions (
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
     FOREIGN KEY (todo_id) REFERENCES todos(id) ON DELETE SET NULL,
     INDEX idx_user_pomodoro (user_id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+);
